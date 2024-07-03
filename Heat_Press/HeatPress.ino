@@ -1,7 +1,7 @@
 
 //#include <Controllino.h>
 #include "ModbusRtu.h"
-#include "afl_call.h"
+// #include "afl_call.h"
 
 #define CONTROLLINO_A1 1
 #define CONTROLLINO_D6 6
@@ -89,7 +89,7 @@ void setup() {
   dutybajo1= millis()+1000;
   reloj= millis()+1000;
   u8state = 0;
-  startForkserver(0);
+  // startForkserver(0);
 }
 
 void loop() {
