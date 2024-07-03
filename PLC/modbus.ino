@@ -8,7 +8,13 @@
  */
 
 #include "ModbusRtu.h"
-#include "afl_call.h"
+// #include "afl_call.h"
+
+// overwrite the default HardFault_Handler
+extern "C" void HardFault_Handler(void)
+{
+	__asm("bkpt #0");
+}
 
 // data array for modbus network sharing
 uint16_t au16data[16] = {
@@ -24,7 +30,7 @@ uint16_t au16data[16] = {
 Modbus slave(1,0,0); // this is slave @1 and RS-232 or USB-FTDI
 
 void setup() {
-    startForkserver(0);
+    //startForkserver(0);
 
     // init HardwareSerial here by port->begin, rather than in ctro 
     slave.begin( 19200 ); // baud-rate at 19200
