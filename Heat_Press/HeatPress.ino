@@ -3,12 +3,12 @@
 #include "ModbusRtu.h"
 // #include "afl_call.h"
 
-#define CONTROLLINO_A1 1
-#define CONTROLLINO_D6 6
-#define CONTROLLINO_D0 0
-#define CONTROLLINO_D1 1
-
-#define SalidaRelay  CONTROLLINO_D0 //pin que controla la salida de rele PID
+//#define CONTROLLINO_A1 1
+//#define CONTROLLINO_D6 6
+//#define CONTROLLINO_D0 0
+//#define CONTROLLINO_D1 1
+//
+//#define SalidaRelay  CONTROLLINO_D0 //pin que controla la salida de rele PID
 
 // data array for modbus network sharing
 uint16_t au16data[32],data8024[10];
@@ -22,7 +22,7 @@ float temperatura1,temperatura2,ep1=0,e1=0,ep2=0,e2=0;
 float kpa1=0,kia1=0,kda1=0,kpp1=0,kip1=0,kdp1=0,kpa2=0,kia2=0,kda2=0,kpp2=0,kip2=0,kdp2=0,YN,YNp;
 int pid1,pid2,tiempo_alto1,tiempo_bajo1,incre,in1,in2,in3,in4,in5,in6,in7,in8;
 
-Modbus master(0,0, CONTROLLINO_D6); // this is master and RS-232 or USB-FTDI
+Modbus master(0,0,0); // this is master and RS-232 or USB-FTDI
 
 modbus_t telegram[6];
 unsigned long u32wait,tiempopid1,reloj,dutyalto1,dutybajo1;
@@ -33,13 +33,13 @@ unsigned long u32wait,tiempopid1,reloj,dutyalto1,dutybajo1;
 
 void setup() {
   
-  pinMode(CONTROLLINO_A1, INPUT);
+  //pinMode(CONTROLLINO_A1, INPUT);
   
-  pinMode(CONTROLLINO_D6, OUTPUT);
-  pinMode(CONTROLLINO_D0, OUTPUT);
-  pinMode(CONTROLLINO_D1, OUTPUT);
-  digitalWrite(SalidaRelay, LOW);
-  digitalWrite(CONTROLLINO_D1,LOW);
+  //pinMode(CONTROLLINO_D6, OUTPUT);
+  //pinMode(CONTROLLINO_D0, OUTPUT);
+  //pinMode(CONTROLLINO_D1, OUTPUT);
+  //digitalWrite(SalidaRelay, LOW);
+  //digitalWrite(CONTROLLINO_D1,LOW);
 
   //**** PREPARACION DE TELEGRAMAS
   
