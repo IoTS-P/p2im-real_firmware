@@ -1,8 +1,10 @@
 
 //#include <Controllino.h>
 #include "ModbusRtu.h"
+#include "snapshot.h"
 // #include "afl_call.h"
 
+extern unsigned int _ebss;
 //#define CONTROLLINO_A1 1
 //#define CONTROLLINO_D6 6
 //#define CONTROLLINO_D0 0
@@ -83,6 +85,11 @@ void setup() {
 //data8024[1]=0x0000; //ENCIENDE RELE 2
   master.begin( 19200 ); // baud-rate at 19200
   master.setTimeOut( 2000 ); // if there is no answer in 2000 ms, roll over
+  // test
+  Serial.print("_ebss: ");
+  Serial.print(_ebss);
+  Serial.print("\r\n");
+  // test end
   u32wait = millis();
   tiempopid1= millis()+1000;
   dutyalto1= millis()+1000;
@@ -93,7 +100,7 @@ void setup() {
 }
 
 void loop() {
-
+SNAPSHOT_HANDLING_ASM();
 switch( u8state ) {
   case 0: 
     if (millis() > u32wait) u8state++; // wait state

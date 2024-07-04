@@ -1,4 +1,9 @@
 *.hex
 *.elf
+*.bin
 build
 *.o
+
+# Ozone
+*.jdebug
+*.jdebug.user
