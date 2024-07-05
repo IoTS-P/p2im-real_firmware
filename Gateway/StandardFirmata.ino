@@ -27,7 +27,7 @@
 #include <Wire.h>
 #include <Firmata.h>
 
-#include "afl_call.h"
+// #include "afl_call.h"
 
 #define I2C_WRITE                   B00000000
 #define I2C_READ                    B00001000
@@ -780,7 +780,7 @@ void setup()
 
   systemResetCallback();  // reset to default config
 
-  startForkserver(0);
+  // startForkserver(0);
 }
 
 /*==============================================================================
