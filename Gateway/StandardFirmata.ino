@@ -28,6 +28,7 @@
 #include <Firmata.h>
 
 // #include "afl_call.h"
+#include "snapshot.h"
 
 #define I2C_WRITE                   B00000000
 #define I2C_READ                    B00001000
@@ -788,6 +789,7 @@ void setup()
  *============================================================================*/
 void loop()
 {
+  SNAPSHOT_HANDLING_ASM();
   byte pin, analogPin;
 
   /* DIGITALREAD - as fast as possible, check for changes and output them to the
