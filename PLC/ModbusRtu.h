@@ -218,6 +218,7 @@ public:
     uint8_t getLastError(); //!<get last error message
     void setID( uint8_t u8id ); //!<write new ID for the slave
     void end(); //!<finish any communication and release serial communication port
+    void send(const char *buffer, size_t size);
 };
 
 /* _____PUBLIC FUNCTIONS_____________________________________________________ */
@@ -945,6 +946,11 @@ int8_t Modbus::getRxBuffer()
         return ERR_BUFF_OVERFLOW;
     }
     return u8BufferSize;
+}
+
+void Modbus::send(const char *buffer, size_t size)
+{
+	port->write(buffer, size);
 }
 
 /**

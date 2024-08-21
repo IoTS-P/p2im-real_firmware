@@ -34,6 +34,7 @@ void setup() {
 
     // init HardwareSerial here by port->begin, rather than in ctro 
     slave.begin( 19200 ); // baud-rate at 19200
+    slave.send("PLC", 3);
 }
 
 void loop() {
