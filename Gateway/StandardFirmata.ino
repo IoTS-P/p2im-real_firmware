@@ -30,6 +30,12 @@
 // #include "afl_call.h"
 #include "snapshot.h"
 
+// overwrite the default HardFault_Handler
+extern "C" void HardFault_Handler(void)
+{
+	__asm("bkpt #0");
+	Serial.print("Hard Fault \r\n");
+}
 
 #define I2C_WRITE                   B00000000
 #define I2C_READ                    B00001000
