@@ -30,6 +30,7 @@
 // #include "afl_call.h"
 #include "snapshot.h"
 
+
 #define I2C_WRITE                   B00000000
 #define I2C_READ                    B00001000
 #define I2C_READ_CONTINUOUSLY       B00010000
@@ -724,16 +725,17 @@ void systemResetCallback()
     previousPINs[i] = 0;
   }
 
+  // comment because it will influence debug
   for (byte i = 0; i < TOTAL_PINS; i++) {
-    // pins with analog capability default to analog input
-    // otherwise, pins default to digital output
-    if (IS_PIN_ANALOG(i)) {
-      // turns off pullup, configures everything
-      setPinModeCallback(i, PIN_MODE_ANALOG);
-    } else if (IS_PIN_DIGITAL(i)) {
-      // sets the output to 0, configures portConfigInputs
-      setPinModeCallback(i, OUTPUT);
-    }
+  //  // pins with analog capability default to analog input
+  //  // otherwise, pins default to digital output
+  //  if (IS_PIN_ANALOG(i)) {
+  //    // turns off pullup, configures everything
+  //    setPinModeCallback(i, PIN_MODE_ANALOG);
+  //  } else if (IS_PIN_DIGITAL(i)) {
+  //    // sets the output to 0, configures portConfigInputs
+  //    setPinModeCallback(i, OUTPUT);
+  //  }
 
     servoPinMap[i] = 255;
   }
